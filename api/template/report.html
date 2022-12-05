@@ -1,0 +1,68 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class=container>
+
+	<div class=row>
+		<h1 class="text-center text-uppercase">Demand report</h1>
+	</div>
+{{data}}
+	<div class=col-md-4>
+
+	<form>
+		<label>department</label>
+			<select name="department" id="department">
+				<option value="	Construction Department">Construction Department</option>
+				<option value="	Human Resource Department">	Human Resource Department</option>
+			</select>
+	</form>
+	</div>
+	
+	
+	  <canvas id="myChart"></canvas>
+	  
+	<table class="table table-striped">
+		<tr>
+			<th>name</th>
+			<th>quantity sold</th> 
+		</tr>
+		{%for Works_on in data %}
+		<tr>
+			<td>{{Works_on.duration}}</td>
+			<td>{{Works_on.department}}</td>
+			
+		</tr>
+		{% endfor %}
+			
+		</table>
+
+            <canvas id="myChart1" width="400" height="300"></canvas>
+			<script>
+				const data={
+				labels: ['senitha', 'anuja', 'manidu', 'manidu', 'kavindu',],
+				datasets: [{
+					label: 'My First dataset',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: [10, 124, 169, 147, 33],
+				}]
+				};
+				const config={
+					type:'bar',
+					data: data,
+					option: {}
+				};
+				
+				new Chart(document.getElementById('myChart'), config);
+				
+			</script>
+</div>
+
